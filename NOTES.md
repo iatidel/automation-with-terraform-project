@@ -16,3 +16,9 @@
   - after terrafrom init I got error ` Unreadable module directory`
   - By mistake, I nested the folder as modules/modules/rgroup-8365
   - I moved it up and delete the sub folder module 
+## Module 02 For Networking
+### network-8365
+- I create one virtual network 8365-VNET and one subnet 8365-SUBNET in my 8365-RG
+- For my NSG there is 4 inbound rule: 22 (SSH), 3389 (RDP), 5985 (WINRM) and 80 (HTTP), I used priority using this numbers: 100, 110, 120, 130
+- Now i guess my terraform plan will give me 5 resources to add : RG, VNET, subnet, NSG, association
+
