@@ -1,6 +1,6 @@
 locals {
   humber_id = "8365"
-  location  = "canadacentral"
+  location  = "eastus"
 
   common_tags = {
     Project        = "CCGC 5502 Terraform Project"

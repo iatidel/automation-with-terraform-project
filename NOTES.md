@@ -26,3 +26,10 @@
 - I created 3 things in 8365-RG : 1 log form monitoring, 1 recovery service vault, and one storage account different from the backend 
 - I got an error tha recovery services vault name must start with a letter
 - Fix: renamed 8365-vault to rsv-8365
+## Module 04 For Linux VMs
+### vmlinux-8365
+- 3 linux VMs, each in different availabilty zone, using `for_each`. 
+- each VM need: Public IP, unique DNS label, network card (NIC), boot diagnostics, 2 extensions , provisioner
+- Canada central only ofred sizes that are not compatible with CentOs/windows x86
+- I changed project region to East US (F1ads_v7 worked there in earlier labs ) so lets see
+- I left my backend storage in canada central 
