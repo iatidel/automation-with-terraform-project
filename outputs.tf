@@ -21,3 +21,19 @@ output "vault_name" {
 output "storage_name" {
   value = module.common.storage_name
 }
+
+output "linux_hostnames" {
+  value = module.vmlinux.vm_names
+}
+
+output "linux_fqdns" {
+  value = module.vmlinux.fqdns
+}
+
+output "linux_private_ips" {
+  value = module.vmlinux.private_ips
+}
+
+output "linux_public_ips" {
+  value = module.vmlinux.public_ips
+}

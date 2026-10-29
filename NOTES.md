@@ -33,3 +33,7 @@
 - Canada central only ofred sizes that are not compatible with CentOs/windows x86
 - I changed project region to East US (F1ads_v7 worked there in earlier labs ) so lets see
 - I left my backend storage in canada central 
+- I will use stabdard F1ads_v7
+- VM worked, I got error that domain_name_label must start with a letter so i used "vm-${each.key}" so DNS label is vm-8365-u-vm1
+- i added 2 externsions per vm and remote-exec provisionner ( terraform data, for each)
+- Plan is now 26 to add

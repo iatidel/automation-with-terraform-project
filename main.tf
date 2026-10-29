@@ -38,3 +38,21 @@ module "common" {
   vault_name   = "rsv-${local.humber_id}"
   storage_name = "${local.humber_id}storage"
 }
+
+module "vmlinux" {
+  source           = "./modules/vmlinux-8365"
+  rg_name          = module.rgroup.rg_name
+  location         = local.location
+  tags             = local.common_tags
+  subnet_id        = module.network.subnet_id
+  storage_uri      = module.common.storage_uri
+  vm_size          = "Standard_F1ads_v7"
+  admin_username   = "n10038365"
+  public_key_path  = "/home/n10038365/.ssh/id_rsa.pub"
+  private_key_path = "/home/n10038365/.ssh/id_rsa"
+  linux_vms = {
+    "8365-u-vm1" = "1"
+    "8365-u-vm2" = "2"
+    "8365-u-vm3" = "3"
+  }
+}
