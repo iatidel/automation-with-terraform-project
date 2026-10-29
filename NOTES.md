@@ -21,4 +21,8 @@
 - I create one virtual network 8365-VNET and one subnet 8365-SUBNET in my 8365-RG
 - For my NSG there is 4 inbound rule: 22 (SSH), 3389 (RDP), 5985 (WINRM) and 80 (HTTP), I used priority using this numbers: 100, 110, 120, 130
 - Now i guess my terraform plan will give me 5 resources to add : RG, VNET, subnet, NSG, association
-
+## Module 03 For Common Services
+### common-8365
+- I created 3 things in 8365-RG : 1 log form monitoring, 1 recovery service vault, and one storage account different from the backend 
+- I got an error tha recovery services vault name must start with a letter
+- Fix: renamed 8365-vault to rsv-8365

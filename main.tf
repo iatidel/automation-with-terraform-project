@@ -28,3 +28,13 @@ module "network" {
   subnet_space = ["10.0.0.0/24"]
   nsg_name     = "${local.humber_id}-NSG"
 }
+
+module "common" {
+  source       = "./modules/common-8365"
+  rg_name      = module.rgroup.rg_name
+  location     = local.location
+  tags         = local.common_tags
+  law_name     = "${local.humber_id}-law"
+  vault_name   = "rsv-${local.humber_id}"
+  storage_name = "${local.humber_id}storage"
+}
