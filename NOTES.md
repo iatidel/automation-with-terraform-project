@@ -46,4 +46,11 @@ and AzureMonitorLinuxAgent. Means version 1.0 is not found in azure
 - lets try Centos 7.9 with Extensions: Network Watcher 1.4 ( as it worked before), Azure Monitor 1.0, both auto upgrade true
 - Azure monitor agent 1.45 also rejected Centos 7 (`unsuported OS)
 - Since ubuntu worked in my labs i guess i will try ubuntu latest version (22.04 Gen2 (Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2))
-- `worked` so what worked together is : Image: Ubuntu 22.04 Gen2 (Canonical) with network watcher 1.4 with auto upgrade true, azure monitor 1.0 with auto upgrade true, size Standard D2as_v4 and in eastus
+- `worked` so what worked together is : Image Ubuntu 22.04 Gen2 (Canonical) with network watcher 1.4 with auto upgrade true, azure monitor 1.0 with auto upgrade true, size Standard D2as_v4 and in eastus
+## Module 05 for Windows VM
+### vmwindows-8365
+- I used count, availability set, winrm_listener Http same as lab 04
+- used windows Server 2022 Gen2 (2022-datacenter-g2), D2as_v4, no zone (availability set instaed)
+- used password as variable same as lab04
+- supposed to get 31 to be added ( vm, availability set, ip, nic, extension) in terraform plan
+- terraform apply worked with 31 resources succeded, then destroyed

@@ -56,3 +56,16 @@ module "vmlinux" {
     "8365-u-vm3" = "3"
   }
 }
+
+module "vmwindows" {
+  source       = "./modules/vmwindows-8365"
+  rg_name      = module.rgroup.rg_name
+  location     = local.location
+  tags         = local.common_tags
+  subnet_id    = module.network.subnet_id
+  storage_uri  = module.common.storage_uri
+  vm_size      = "Standard_D2as_v4"
+  windows_name = "${local.humber_id}-w-vm"
+  avset_name   = "${local.humber_id}-w-avset"
+  nb_count     = 1
+}
