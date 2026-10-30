@@ -66,3 +66,13 @@ and AzureMonitorLinuxAgent. Means version 1.0 is not found in azure
 - so 8 Resources to be added: public IP, Load balancer, backend pool, health probe, LB rule, and 3 Associations
 - Error: Azure blocks Basic and said ` crearion of new Basic SKU publuc IP addresses is no longer permitted` 
 - I will try standard instead of Basic SKU load balancer and lets us see
+- yes, plan worked with 47 to add
+## Module 08 for Database
+### database-8365
+- one PostgreSQL flexible server
+- so PostgreSQL is blocked in east us
+- i will use canada central for the database, it offers standard B1ms
+- Canada Central PostgreSQL versions start at 11; I used 12 as it is the version from the lecture
+- SKU for Terraform: B_Standard_B1ms
+- plan worked with 48 to add as expected
+- apply succeded with 48 resources

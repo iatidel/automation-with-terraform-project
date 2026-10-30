@@ -91,3 +91,14 @@ module "loadbalancer" {
   lb_sku   = "Standard"
   nic_ids  = module.vmlinux.nic_ids
 }
+
+module "database" {
+  source        = "./modules/database-8365"
+  rg_name       = module.rgroup.rg_name
+  location      = "canadacentral"
+  tags          = local.common_tags
+  db_name       = "${local.humber_id}-psql"
+  db_version    = "12"
+  db_sku        = "B_Standard_B1ms"
+  db_storage_mb = 32768
+}

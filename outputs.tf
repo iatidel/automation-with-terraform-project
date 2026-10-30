@@ -61,3 +61,7 @@ output "data_disk_names" {
 output "load_balancer_name" {
   value = module.loadbalancer.lb_name
 }
+
+output "database_name" {
+  value = module.database.db_name
+}
