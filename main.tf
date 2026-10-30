@@ -81,3 +81,13 @@ module "datadisk" {
   windows_names  = module.vmwindows.hostnames
   disk_size      = 10
 }
+
+module "loadbalancer" {
+  source   = "./modules/loadbalancer-8365"
+  rg_name  = module.rgroup.rg_name
+  location = local.location
+  tags     = local.common_tags
+  lb_name  = "${local.humber_id}-LB"
+  lb_sku   = "Standard"
+  nic_ids  = module.vmlinux.nic_ids
+}

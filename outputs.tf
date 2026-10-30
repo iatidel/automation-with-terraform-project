@@ -57,3 +57,7 @@ output "windows_public_ips" {
 output "data_disk_names" {
   value = module.datadisk.disk_names
 }
+
+output "load_balancer_name" {
+  value = module.loadbalancer.lb_name
+}

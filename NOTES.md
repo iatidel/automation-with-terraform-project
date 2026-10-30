@@ -54,3 +54,15 @@ and AzureMonitorLinuxAgent. Means version 1.0 is not found in azure
 - used password as variable same as lab04
 - supposed to get 31 to be added ( vm, availability set, ip, nic, extension) in terraform plan
 - terraform apply worked with 31 resources succeded, then destroyed
+
+## Module 06 for Data Disk
+### datadisk-8365
+- I created 4 disks with 10 GB each, one per VM and then Attached each one to its VM with data disk attachment 
+- So now after terraform plan i should get add 39 ( 31 + 4 disks and 4 attachements)
+- Worked with no errors 
+## Module 07 for Load Balancer
+### loadbalancer-8365
+- My load balancer is like a receptionist. Visitors come to one public address on port 80, and it sends each visitor to one of the 3 linux VMs. A health probe checks each VM is alive.
+- so 8 Resources to be added: public IP, Load balancer, backend pool, health probe, LB rule, and 3 Associations
+- Error: Azure blocks Basic and said ` crearion of new Basic SKU publuc IP addresses is no longer permitted` 
+- I will try standard instead of Basic SKU load balancer and lets us see
