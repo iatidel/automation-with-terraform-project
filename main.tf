@@ -46,7 +46,7 @@ module "vmlinux" {
   tags             = local.common_tags
   subnet_id        = module.network.subnet_id
   storage_uri      = module.common.storage_uri
-  vm_size          = "Standard_F1ads_v7"
+  vm_size          = "Standard_D2as_v4"
   admin_username   = "n10038365"
   public_key_path  = "/home/n10038365/.ssh/id_rsa.pub"
   private_key_path = "/home/n10038365/.ssh/id_rsa"
