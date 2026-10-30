@@ -1,6 +1,6 @@
 locals {
-  humber_id = "8365"
-  location  = "eastus"
+  humber_id = var.humber_id
+  location  = var.location
 
   common_tags = {
     Project        = "CCGC 5502 Terraform Project"
@@ -23,9 +23,9 @@ module "network" {
   location     = local.location
   tags         = local.common_tags
   vnet_name    = "${local.humber_id}-VNET"
-  vnet_space   = ["10.0.0.0/16"]
+  vnet_space   = var.vnet_space
   subnet_name  = "${local.humber_id}-SUBNET"
-  subnet_space = ["10.0.0.0/24"]
+  subnet_space = var.subnet_space
   nsg_name     = "${local.humber_id}-NSG"
 }
 
@@ -46,15 +46,11 @@ module "vmlinux" {
   tags             = local.common_tags
   subnet_id        = module.network.subnet_id
   storage_uri      = module.common.storage_uri
-  vm_size          = "Standard_D2as_v4"
-  admin_username   = "n10038365"
-  public_key_path  = "/home/n10038365/.ssh/id_rsa.pub"
-  private_key_path = "/home/n10038365/.ssh/id_rsa"
-  linux_vms = {
-    "8365-u-vm1" = "1"
-    "8365-u-vm2" = "2"
-    "8365-u-vm3" = "3"
-  }
+  vm_size          = var.linux_vm_size
+  admin_username   = var.admin_username
+  public_key_path  = var.public_key_path
+  private_key_path = var.private_key_path
+  linux_vms        = var.linux_vms
 }
 
 module "vmwindows" {
@@ -64,10 +60,10 @@ module "vmwindows" {
   tags         = local.common_tags
   subnet_id    = module.network.subnet_id
   storage_uri  = module.common.storage_uri
-  vm_size      = "Standard_D2as_v4"
+  vm_size      = var.windows_vm_size
   windows_name = "${local.humber_id}-w-vm"
   avset_name   = "${local.humber_id}-w-avset"
-  nb_count     = 1
+  nb_count     = var.windows_count
 }
 
 module "datadisk" {
@@ -79,7 +75,7 @@ module "datadisk" {
   linux_zones    = module.vmlinux.zones
   windows_vm_ids = module.vmwindows.vm_ids
   windows_names  = module.vmwindows.hostnames
-  disk_size      = 10
+  disk_size      = var.disk_size
 }
 
 module "loadbalancer" {
@@ -88,17 +84,17 @@ module "loadbalancer" {
   location = local.location
   tags     = local.common_tags
   lb_name  = "${local.humber_id}-LB"
-  lb_sku   = "Standard"
+  lb_sku   = var.lb_sku
   nic_ids  = module.vmlinux.nic_ids
 }
 
 module "database" {
   source        = "./modules/database-8365"
   rg_name       = module.rgroup.rg_name
-  location      = "canadacentral"
+  location      = var.db_location
   tags          = local.common_tags
   db_name       = "${local.humber_id}-psql"
-  db_version    = "12"
-  db_sku        = "B_Standard_B1ms"
-  db_storage_mb = 32768
+  db_version    = var.db_version
+  db_sku        = var.db_sku
+  db_storage_mb = var.db_storage_mb
 }
