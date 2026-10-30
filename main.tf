@@ -69,3 +69,15 @@ module "vmwindows" {
   avset_name   = "${local.humber_id}-w-avset"
   nb_count     = 1
 }
+
+module "datadisk" {
+  source         = "./modules/datadisk-8365"
+  rg_name        = module.rgroup.rg_name
+  location       = local.location
+  tags           = local.common_tags
+  linux_vm_ids   = module.vmlinux.vm_ids
+  linux_zones    = module.vmlinux.zones
+  windows_vm_ids = module.vmwindows.vm_ids
+  windows_names  = module.vmwindows.hostnames
+  disk_size      = 10
+}

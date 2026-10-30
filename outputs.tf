@@ -53,3 +53,7 @@ output "windows_private_ips" {
 output "windows_public_ips" {
   value = module.vmwindows.public_ips
 }
+
+output "data_disk_names" {
+  value = module.datadisk.disk_names
+}

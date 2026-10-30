@@ -21,3 +21,7 @@ output "vm_ids" {
 output "nic_ids" {
   value = { for k, v in azurerm_network_interface.nic : k => v.id }
 }
+
+output "zones" {
+  value = var.linux_vms
+}
